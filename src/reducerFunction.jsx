@@ -1,23 +1,19 @@
-
-
-export default (state, action) => {
+const reducerFunction = (state, action) => {
   switch (action.type) {
     case "DELETE_NOTE":
       return {
         ...state,
-        notes: state.notes.filter(
-          note => note.id !== action.payload
-        )
+        notes: state.notes.filter((note) => note.id !== action.payload),
       };
     case "ADD_NOTE":
       return {
         ...state,
-        notes: [...state.notes, action.payload]
+        notes: [...state.notes, action.payload],
       };
     case "EDIT_NOTE":
       const updatedNote = action.payload;
 
-      const updatedNotes = state.notes.map(note => {
+      const updatedNotes = state.notes.map((note) => {
         if (note.id === updatedNote.id) {
           return updatedNote;
         }
@@ -32,3 +28,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default reducerFunction;

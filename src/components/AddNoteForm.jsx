@@ -1,14 +1,12 @@
 import React, { useState, useContext } from "react";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import { NoteContext } from "../store/NoteContext";
 
 const AddNoteForm = () => {
-  
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
-  const {addNote, notes } = useContext(NoteContext);
+  const { addNote, notes } = useContext(NoteContext);
   let history = useHistory();
-  
 
   const submitNote = (e) => {
     e.preventDefault();
@@ -22,12 +20,10 @@ const AddNoteForm = () => {
   };
 
   return (
-    
     <div>
       <div className="form-container container">
-      <h1 className="centered">Create a new Note🐊🐊🐊 </h1>
         <form onSubmit={submitNote}>
-          <label for="fname">Title</label>
+          <label htmlFor="fname">Title</label>
           <input
             type="text"
             id="fname"
@@ -37,7 +33,7 @@ const AddNoteForm = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <br />
-          <label for="subject">Subject</label>
+          <label htmlFor="subject">Subject</label>
           <textarea
             id="subject"
             className="form-control rounded-0"
@@ -46,22 +42,20 @@ const AddNoteForm = () => {
             style={{ height: "200px" }}
             onChange={(e) => setSubject(e.target.value)}
           ></textarea>
+
+          {/*  I think u redesign what input for the properties of the note! You need an image? */}
           <label>
-            
             <input type="file" name="Add Note Image" id="imgurl" />
             Add Note image💣
           </label>
           <br />
-          <button><input
-            type="submit"
-            value="Submit"
-            className="btn btn-success rounded-0"
-          /></button>
+          <button type="submit" className="btn btn-success rounded-0">
+            Submit
+          </button>
         </form>
       </div>
     </div>
   );
-  
 };
 
 export default AddNoteForm;

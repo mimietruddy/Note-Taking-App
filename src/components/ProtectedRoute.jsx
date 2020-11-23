@@ -4,25 +4,21 @@ import { Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "../store/AuthContext";
 
-const ProtectedRoute = ({
-  component: OurComponent,
-  ...rest
-}) => {
-  
-
+const ProtectedRoute = ({ component: OurComponent, ...rest }) => {
   const { isLoggedIn } = useContext(AuthContext);
-
   return (
     <Route
       {...rest}
       render={(props) =>
         isLoggedIn ? (
-          <OurComponent  {...props} />
+          <OurComponent {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
         )
-      }></Route>
+      }
+    ></Route>
   );
 };
-
 export default ProtectedRoute;
