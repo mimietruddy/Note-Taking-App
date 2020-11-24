@@ -13,7 +13,7 @@ const AuthContextProvider = (props) => {
       setUser(user); // set user to user form firebase
       console.log("AuthContextProvider -> isLoggedIn", isLoggedIn);
     });
-  }, [user]);
+  }, [user, isLoggedIn]);
 
   return (
     <AuthContext.Provider

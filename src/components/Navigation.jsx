@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpeg";
-import {AuthContext} from "../store/AuthContext"
+import {AuthContext} from "../store/AuthContext";
+
 const Navigation = () => {
-  const { isLoggedIn, user, firebase } = useContext(AuthContext);
+  const { isLoggedIn, firebase } = useContext(AuthContext);
 
   const AuthLinks = () => {
     return (
       <>
         <li className="nav-list-item">
           <Link to="/addnote" className="nav-link">
-            create Note🌈
+            Create Note🌈
           </Link>
         </li>
         <li className="nav-list-item">
@@ -19,7 +20,8 @@ const Navigation = () => {
           </Link>
         </li>
         <li className="nav-list-item">
-          <button className="btn btn-warning" onClick={()=>firebase.auth().signOut()} className="nav-link">
+          <button className="btn btn-warning nav-link" onClick={()=>firebase.auth().signOut()} 
+          >
             Logout
           </button>
         </li>

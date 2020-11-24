@@ -24,8 +24,12 @@ const App = () => {
             <Navigation />
             <main>
               <Switch>
-
-                <ProtectedRoute path="/" exact component={HomePage} />
+                {/* If you protect this, ur login redirect to home page won't work by default though
+                So you may decide with other path you redirect in the fireconfig file other than 
+                homePage....
+                or work on some code ! :) */}
+                {/* <ProtectedRoute path="/" exact component={HomePage} /> */}
+                <Route path="/" exact component={HomePage} />
                 <ProtectedRoute path="/addnote" component={AddNote} />
                 <ProtectedRoute path="/edit/:id" component={EditNote} />
                 <Route path="/login" component={LoginPage} />
